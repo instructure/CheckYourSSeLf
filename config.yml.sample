@@ -1,0 +1,65 @@
+---
+# Warnings will be displayed when the number of days remaining before
+# a certificate expires is less than this value.
+days_remaining_warning_threshold: 31
+
+
+# AWS Configuration
+# ---
+# IAM Server Certificates are globally propagated, and the AWS API
+# will return all of the server certificates in an account regardless
+# of the regions where they are being used. This setting simply
+# determines which regional API endpoint will handle the requests.
+aws_default_region: "us-east-1"
+
+# Maximum number of certificates that the AWS API will return.
+aws_max_items: 750
+
+# CheckYourSSeLf can monitor multiple AWS accounts for expiring
+# certificates. Each account should have a name (which will be
+# displayed in the bot's output) and a dedicated IAM user/keypair
+# that has only the necessary permissions for its operation.
+# The following IAM policy covers everything that the bot will
+# need to do:
+# --
+#   {
+#       "Version": "2012-10-17",
+#       "Statement": [
+#           {
+#               "Effect": "Allow",
+#               "Action": [
+#                   "iam:ListServerCertificates",
+#                   "iam:GetServerCertificate"
+#               ],
+#               "Resource": "*"
+#           }
+#       ]
+#   }
+aws_accounts:
+  - name: "Ellingson Mineral Company"
+    aws_access_key_id: "AKIAYYYYYYYYYYYYYYYY"
+    aws_secret_access_key: "0000000000000000000000000000000000000000"
+
+  - name: "The Gibson"
+    aws_access_key_id: "AKIAZZZZZZZZZZZZZZZZ"
+    aws_secret_access_key: "1111111111111111111111111111111111111111"
+
+
+# Slack Configuration
+# ---
+# Channels that should be notified when a certificate falls below the
+# warning threshold.
+slack_channels:
+  - "#hacktheplanet"
+  - "#ughhardcopy"
+  - "#zerocool"
+
+# Emoji that will be displayed as the bot's avatar.
+slack_emoji: ":lock:"
+
+# The bot's username.
+slack_username: "CheckYourSSeLf"
+
+# A new Slack Incoming Webhook URL can be configured here:
+#   https://my.slack.com/services/new/incoming-webhook/
+slack_webhook_url: "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"
