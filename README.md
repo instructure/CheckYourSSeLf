@@ -1,10 +1,10 @@
 CheckYourSSeLf
 ==============
-A friendly [Slack](https://slack.com/) bot that checks your Amazon AWS accounts for expiring SSL certificates.
+A friendly [Slack](https://slack.com/) bot that checks your Amazon AWS accounts, and remote urls for expiring SSL certificates.
 
 How does it work?
 -----------------
-* The bot retrieves a list of all IAM Server Certificates from each configured AWS account.
+* The bot retrieves a list of all IAM Server Certificates from each configured AWS account, and each remote url.
 * Every certificate is then parsed to see how many days are left until expiration.
 * Certificates that fall below the configured warning threshold will trigger an alert.
 * The results get posted to Slack.
@@ -12,23 +12,23 @@ How does it work?
 How do I use it?
 ----------------
 1. Clone this repository.
-1. Create a copy of the sample configuration file and modify it to suit your needs.
+2. Create a copy of the sample configuration file and modify it to suit your needs.
    * `cp config.yml.sample config.yml`
    * `text-editor-of-your-choice config.yml`
-1. Choose a home for the bot, and copy it there. Ruby and Bundler are the only requirements.
+3. Choose a home for the bot, and copy it there. Ruby and Bundler are the only requirements.
    * `ssh deploy@slackbot-server 'mkdir -p /opt/checkyoursself'`
    * `scp CheckYourSSeLf.rb config.yml Gemfile Gemfile.lock deploy@slackbot-server:/opt/checkyoursself`
-1. Install the bundle.
+4. Install the bundle.
    * `ssh deploy@slackbot-server 'cd /opt/checkyoursself && bundle install --deployment'`
-1. Run the bot once to make sure everything is working properly.
+5. Run the bot once to make sure everything is working properly.
    * `ssh deploy@slackbot-server 'cd /opt/checkyoursself && ruby CheckYourSSeLf.rb'`
-1. Set up a crontab entry to run the bot on a regular basis.
+6. Set up a crontab entry to run the bot on a regular basis.
    * `ssh deploy@slackbot-server`
    * `crontab -e`
      * A line like this would make the bot run once a day at 16:05:
 
        `5 16 * * * cd /opt/checkyoursself && ruby CheckYourSSeLf.rb`
-1. That's it. No more surprises!
+7. That's it. No more surprises!
 
 LICENSE
 -------
