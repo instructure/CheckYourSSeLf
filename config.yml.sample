@@ -2,9 +2,9 @@
 # Warnings will be displayed when the number of days remaining before
 # a certificate expires is less than this value.
 days_remaining_warning_threshold: 31
-# The threshold in which to turn announcements "yellow" for warning.
+# The threshold at which to turn announcements "yellow" for warning.
 medium_threshold: 20
-# The threshold in which to turn announcements "red" for critical.
+# The threshold at which to turn announcements "red" for critical.
 low_threshold: 10
 
 # AWS Configuration
@@ -58,8 +58,8 @@ slack_channels:
   - "#zerocool"
 
 remote_certs:
-  - name: "Razer&Blade"
-    url: "https://razer.blade.com"
+  - name: "Razor&Blade"
+    url: "https://razor.blade.com"
 
 # Emoji that will be displayed as the bot's avatar.
 slack_emoji: ":lock:"
