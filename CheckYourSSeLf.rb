@@ -37,7 +37,11 @@ class CheckYourSSeLf
     certificate_metadata_list = certificate_list.server_certificate_metadata_list
 
     certificate_metadata_list.each_with_object([]) do |cert, name_list|
-      name_list << cert.server_certificate_name
+      certificate_name = cert.server_certificate_name
+
+      unless config["aws_certificates_to_ignore"].include?(certificate_name)
+        name_list << certificate_name
+      end
     end
   end
 

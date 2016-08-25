@@ -47,6 +47,14 @@ aws_accounts:
     aws_access_key_id: "AKIAZZZZZZZZZZZZZZZZ"
     aws_secret_access_key: "1111111111111111111111111111111111111111"
 
+aws_certificates_to_ignore:
+  - "www.mgmua.com_19950915"
+
+# Remote Configuration
+# ---
+remote_certs:
+  - name: "Razor&Blade"
+    url: "https://razor.blade.com"
 
 # Slack Configuration
 # ---
@@ -56,10 +64,6 @@ slack_channels:
   - "#hacktheplanet"
   - "#ughhardcopy"
   - "#zerocool"
-
-remote_certs:
-  - name: "Razor&Blade"
-    url: "https://razor.blade.com"
 
 # Emoji that will be displayed as the bot's avatar.
 slack_emoji: ":lock:"
